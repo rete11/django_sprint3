@@ -15,6 +15,7 @@ def index(request):
     context = {'post_list': post_list}
     return render(request, template_name, context)
 
+
 def post_detail(request, pk):
     template_name = 'blog/detail.html'
     post = get_object_or_404(
@@ -26,6 +27,7 @@ def post_detail(request, pk):
     )
     context = {'post': post}
     return render(request, template_name, context)
+
 
 def category_posts(request, category_slug):
     template_name = 'blog/category.html'
