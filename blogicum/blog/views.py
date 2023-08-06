@@ -7,7 +7,7 @@ now = timezone.now()
 
 def index(request):
     # константа 'num_first_posts' отвечает за количество последних публикаций
-    # константа 'offset' отвечает за сдвиг публикаций
+    # константа 'num_offset' отвечает за сдвиг публикаций
     num_first_posts = 5
     num_offset = 0
     template_name = 'blog/index.html'
