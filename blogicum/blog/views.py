@@ -1,17 +1,19 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render
-from blog.models import Post, Category
 from django.utils import timezone
+from blog.models import Post, Category
 
 now = timezone.now()
 
 
 def index(request):
+    num_first_posts = 5
+    offset = 0
     template_name = 'blog/index.html'
     post_list = Post.objects.filter(
         is_published=True,
         category__is_published=True,
         pub_date__lt=now,
-    ).order_by('-pub_date')[0:5]
+    ).order_by('-pub_date')[offset:num_first_posts]
     context = {'post_list': post_list}
     return render(request, template_name, context)
 
