@@ -6,14 +6,16 @@ now = timezone.now()
 
 
 def index(request):
+    # константа 'num_first_posts' отвечает за количество последних публикаций
+    # константа 'offset' отвечает за сдвиг публикаций
     num_first_posts = 5
-    offset = 0
+    num_offset = 0
     template_name = 'blog/index.html'
     post_list = Post.objects.filter(
         is_published=True,
         category__is_published=True,
         pub_date__lt=now,
-    ).order_by('-pub_date')[offset:num_first_posts]
+    ).order_by('-pub_date')[num_offset:num_first_posts]
     context = {'post_list': post_list}
     return render(request, template_name, context)
 
